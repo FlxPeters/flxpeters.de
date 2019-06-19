@@ -1,0 +1,18 @@
+baseURL = "https://www.flxpeters.de/"
+languageCode = "de-de"
+title = "Felix Peters"
+theme = "ghostwriter"
+
+[Author]
+    name = "Felix Peters"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+    intro = true
+    headline = "Felix Peters"
+    description = "Software- und DevOps-Engineer aus Stuttgart"
+    github = "https://github.com/flxpeters"
+    stackoverflow = "https://stackoverflow.com/users/2613629/el-wichtel"
+    email = "mail@felixpeters.de"

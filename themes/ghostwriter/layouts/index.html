@@ -1,0 +1,22 @@
+{{ partial "header.html" . }}
+
+<div id="post-index" class="container" itemscope="" itemtype="https://schema.org/Blog">
+    {{ partial "intro.html" . }}
+
+    {{ partial "job.html" . }}
+
+    <h2 class="sub-headline" style="margin-top: 50px">Talks</h2>
+
+    <ol class="post-list">
+        {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}
+        {{ range $pag.Pages }}
+            {{ partial "post-stub.html" . }}
+        {{ end }}
+    </ol>
+
+    <div class="post-navigation">
+        {{ partial "pagination.html" . }}
+    </div>
+</div>
+
+{{ partial "footer.html" . }}
