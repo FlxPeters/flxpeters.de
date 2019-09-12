@@ -6,3 +6,15 @@ steps:
   image: plugins/hugo
   settings:
     validate: true
+
+- name: deploy
+  image: drillster/drone-rsync
+  hosts: [ "enif.uberspace.de" ]
+  user: fpeters
+  key: id_rsa_droneci
+  src: public/
+  target: /home/fpeters/html
+  delete: true
+  environment:
+    key: 
+      from_secret: id_rsa_droneci
