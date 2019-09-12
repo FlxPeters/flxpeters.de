@@ -4,6 +4,4 @@ See: https://gohugo.io/
 
 ## Deploy
 
-```
-rsync -azv --delete   public/ fpeters@enif.uberspace.de:html
-```
+DroneCI is responsible for deployment

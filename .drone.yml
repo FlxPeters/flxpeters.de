@@ -20,3 +20,7 @@ steps:
     target: /home/fpeters/html
     secrets: [ rsync_key ]
     delete: true
+
+trigger:
+  branch:
+  - master
