@@ -9,12 +9,14 @@ steps:
 
 - name: deploy
   image: drillster/drone-rsync
-  hosts: [ "enif.uberspace.de" ]
-  user: fpeters
-  key: id_rsa_droneci
-  src: public/
-  target: /home/fpeters/html
-  delete: true
   environment:
-    key: 
-      from_secret: id_rsa_droneci
+    RSYNC_KEY:
+      from_secret: rsync_key
+  settings:
+    user: fpeters
+    hosts:
+      - enif.uberspace.de
+    source: ./public/
+    target: /home/fpeters/html
+    secrets: [ rsync_key ]
+    delete: true
