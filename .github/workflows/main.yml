@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-    - gh-actions
+    - master
 
 jobs:
   build:
@@ -19,7 +19,7 @@ jobs:
     - name: Build
       run: hugo --minify
       
-    - name: Setup SSH agent
+    - name: Deploy
       env:
         DEPLOY_KEY: ${{ secrets.DEPLOY_KEY_UBERSPACE }}
       run: |
