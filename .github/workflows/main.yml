@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      
+    - name: Hugo setup
+      uses: peaceiris/actions-hugo@v2.4.4
+      
+    - name: Build
+      run: hugo --minify
+      
+    - name: Deploy
+      env:
+        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY_UBERSPACE }}
+      run: |
+        eval "$(ssh-agent -s)"
+        ssh-add - <<< "${DEPLOY_KEY}"
+        rsync -e "ssh -o 'StrictHostKeychecking no'" -azv public/ flxptrs@machholz.uberspace.de:/var/www/virtual/flxptrs/html
+      
+      
