@@ -13,11 +13,11 @@ steps:
     RSYNC_KEY:
       from_secret: rsync_key
   settings:
-    user: fpeters
+    user: flxptrs
     hosts:
-      - enif.uberspace.de
+      - machholz.uberspace.de
     source: ./public/
-    target: /home/fpeters/html
+    target: /var/www/virtual/flxptrs/html
     secrets: [ rsync_key ]
     delete: true
 
