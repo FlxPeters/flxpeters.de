@@ -18,6 +18,8 @@ jobs:
       uses: peaceiris/actions-hugo@v2.4.4
     - name: Build
       run: hugo --minify
+    - name: debug
+      run: echo ${{secrets.FOO}}
     - name: Rsync to Uberspace
       id: deploy
       uses: Pendect/action-rsyncer@v1.1.0
