@@ -13,3 +13,5 @@ jobs:
       run: echo Hello, world!
     - name: Hugo setup
       uses: peaceiris/actions-hugo@v2.4.4
+    - name: Build
+      run: hugo --minify
