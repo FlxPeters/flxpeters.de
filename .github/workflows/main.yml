@@ -1,6 +1,9 @@
 name: Deploy
 
-on: [push]
+on:
+  push:
+    branches:
+    - gh-actions
 
 jobs:
   build:
@@ -15,3 +18,18 @@ jobs:
       uses: peaceiris/actions-hugo@v2.4.4
     - name: Build
       run: hugo --minify
+    - name: Rsync to Uberspace
+      uses: Pendect/action-rsyncer@v1.1.0
+      env:
+        DEPLOY_KEY: ${{secrets.DEPLOY_KEY}}
+      with:
+        # Rsync flags
+        #flags: # default is -avzr --delete
+        # Rsync options (exclusion)
+        #options: # default is 
+        # SSH command line options
+        #ssh_options: # default is 
+        # Local folder to be synced
+        src: "public/"
+        # Remote server and path. i.e user@server.com:/var/www/server.com/
+        dest: flxptrs@machholz.uberspace.de:/var/www/virtual/flxptrs/html
